@@ -142,6 +142,75 @@ Request Body:
 
 ---
 
+## Task APIs
+
+### Create Task
+
+### POST `/tasks`
+
+Request Body:
+
+```json
+{
+  "title": "This is title",
+  "description": "This is description",
+  "priority": "High"
+}
+```
+
+---
+
+### Get All Tasks
+
+### GET `/tasks`
+
+Returns logged-in user's tasks.
+
+---
+
+### Update Task
+
+### PATCH `/tasks/:id`
+
+Request Body:
+
+```json
+{
+  "title": "Updated title",
+  "priority": "Medium"
+}
+```
+
+---
+
+### Delete Task
+
+### DELETE `/tasks/:id`
+
+Deletes task by ID.
+
+---
+
+## Analytics API
+
+### GET `/analytics`
+
+Response:
+
+```json
+{
+  "success": true,
+  "data": {
+    "totalLogins": 10,
+    "tasksCreated": 25,
+    "tasksUpdated": 8,
+    "tasksDeleted": 4
+  }
+}
+```
+
+---
+
 # Redis Usage in Project
 
 ### Session Store
