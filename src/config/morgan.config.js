@@ -1,22 +1,29 @@
 import fs from "fs";
 import morgan from "morgan";
 import path from "path";
+import env from "./env.config.js";
 
-const logDir = "logs";
-if (!fs.existsSync(logDir)) fs.mkdirSync(logDir);
-
-const logStream = fs.createWriteStream(
-    path.join(logDir, "access.log"),
-    { flags: "a" }
-);
+const isProduction = env.NODE_ENV === "prod";
 
 export const consoleLogger = morgan("dev");
 
-export const fileLogger = morgan("combined", {
-    stream: logStream,
-});
+let fileLogger;
+let errorOnlyLogs;
 
-export const errorLogger = morgan("combined", {
-    skip: (req, res) => res.statusCode <= 500,
-    stream: logStream,
-});
+if (!isProduction) {
+    const logDir = "logs";
+    if (!fs.existsSync(logDir)) fs.mkdirSync(logDir);
+
+    const logStream = fs.createWriteStream(path.join(logDir, "access.log"), { flags: "a" });
+
+    const errorOnlyLogs = morgan("combined", {
+        skip: (req, res) => res.statusCode <= 500,
+        stream: logStream,
+    });
+
+    fileLogger = morgan("combined", { stream: logStream });
+
+}
+
+export { fileLogger, errorOnlyLogs };
+
