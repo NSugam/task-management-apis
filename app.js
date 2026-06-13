@@ -1,6 +1,6 @@
 import cors from "cors";
 import express from "express";
-
+import path from "path";
 import sessionMiddleware from "./src/config/session.config.js";
 import errorHandler from "./src/middlewares/error.middleware.js";
 import { rateLimiter } from "./src/middlewares/rateLimit.middleware.js";
@@ -9,6 +9,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.resolve("src/public")));
 
 app.use(sessionMiddleware);
 app.use(rateLimiter);
