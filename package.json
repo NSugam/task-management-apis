@@ -1,0 +1,26 @@
+{
+	"name": "task-management-apis",
+	"version": "1.0.0",
+	"main": "app.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "cross-env NODE_ENV=prod node server.js",
+		"start:dev": "cross-env NODE_ENV=dev nodemon server.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"bcryptjs": "^3.0.3",
+		"connect-redis": "^9.0.0",
+		"cors": "^2.8.6",
+		"cross-env": "^10.1.0",
+		"dotenv": "^17.4.2",
+		"express": "^5.2.1",
+		"express-validator": "^7.3.2",
+		"mongoose": "^9.7.0",
+		"morgan": "^1.11.0"
+	}
+}
