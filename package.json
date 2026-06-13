@@ -9,7 +9,7 @@
 		"start:dev": "cross-env NODE_ENV=dev nodemon server.js"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Sugam Neupane",
 	"license": "ISC",
 	"description": "",
 	"dependencies": {
