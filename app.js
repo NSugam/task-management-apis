@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import path from "path";
+import connectDB from "./src/config/db.config.js";
 import sessionMiddleware from "./src/config/session.config.js";
 import errorHandler from "./src/middlewares/error.middleware.js";
 import { rateLimiter } from "./src/middlewares/rateLimit.middleware.js";
@@ -13,6 +14,8 @@ app.use(express.static(path.resolve("src/public")));
 
 app.use(sessionMiddleware);
 app.use(rateLimiter);
+
+connectDB();
 
 // if (env.NODE_ENV === 'dev') app.use(consoleLogger);
 // if (fileLogger) app.use(fileLogger);
